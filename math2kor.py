@@ -1,5 +1,7 @@
-# 사용법
-# python eq2script.py YourExelFile.xlsx
+# How to run
+# python math2kor.py
+# or
+# python math2kor.py YourExelFile.xlsx
 
 from openpyxl import load_workbook, Workbook
 from TexSoup import TexSoup
@@ -112,12 +114,9 @@ class Eq2Script:
                 
 if __name__ == '__main__':
     tex_doc = r'$x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$'
-    # tex_doc = r'x^2+x^3\pm\frac{3x}{2}=4a-t'
-    # tex_doc = r'x=\frac{-b\pm\sqrt{b^{2}-4ac_c}}{2a_1}')
-    # tex_doc = r'$￦{￦begin{array}{c} 3x+2y=4 ￦￦ x-y=3 ￦end{array} ￦Rightarrow  ￦{￦begin{array}{c} 3x+2y=4 ￦￦ 2x-2y=6￦end{array} ￦￦ 5x=10 ￦Rightarrow x=2, y=-1$')
+    # tex_doc = r'$x^2+x^3\pm\frac{3x}{2}=4a-t$')
 
     sample = Eq2Script().text2script(tex_doc)
-    # sample = Eq2Script().script(tex_doc)
     print(sample)
 
 
