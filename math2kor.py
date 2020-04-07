@@ -21,6 +21,7 @@ class Eq2Script:
         math_table = {}
 
         for row in load_ws.rows:
+            
             # 수식
             equation = row[0].value
             # 스크립트
@@ -84,7 +85,8 @@ class Eq2Script:
                 if type(cont) == type(node):
                     script += self.textree(cont)
                 # 텍스트면 그냥 출력
-                elif str(type(cont)) == "<class 'TexSoup.data.RArg'>":
+                # elif str(type(cont)) == "<class 'TexSoup.data.RArg'>":
+                elif prev is not None:
                     for c_raw in cont:
                         c = str(c_raw)
                         if c == str(2):
@@ -115,17 +117,15 @@ class Eq2Script:
     def script(self, equation):
         if len(re.findall('[ㄱ-힣]+', equation)) >= 1:
             equation = equation.replace('(',' ').replace(')',' ')
+            
         if equation.find('>') >= 0 or equation.find('<') >= 0:
             equation=equation.replace('>','\>').replace('<','\<')
-        for i in (self.math_table2.keys()) :
-            if i in equation :
-                tmp = equation.split('\\'+i)
-                equation = '\\' + i +'{'+tmp[1]+'}{'+tmp[0]+'}'
-            else:
-                pass
-
-        node = TexSoup(equation)
         
+        for key in (self.math_table2.keys()) :
+            if key in equation :
+                tmp = equation.split('\\'+key)
+                equation = '\\' + key +'{'+tmp[1]+'}{'+tmp[0]+'}'
+        node = TexSoup(equation)
         script = self.textree(node)
         return script
 
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     # tex_doc = r'$\acute{x}$'
     # tex_doc = r'$\square{ABCD}\sim\square{EFGH}$'
     # tex_doc = r"$x^{2+3}+1$"
-    tex_doc = r'$A \leq B$'
+    tex_doc = r'$A\subsetB$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
