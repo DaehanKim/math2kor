@@ -60,6 +60,24 @@ class Eq2Script:
             script += self.textree(TexSoup(node.args[1].value)) # node.args는 텍스트, 이를 Node화 시키기 위해 TexSoup 사용
             script += '분의'
             script += self.textree(TexSoup(node.args[0].value))
+        elif node.name == 'sqrt':
+            if len(node.args) == 1 :
+                script += '루트'
+                script += self.textree(TexSoup(node.args[0].value))
+            elif node.args[0].value == str(2) :
+                script += '루트'
+                script += self.textree(TexSoup(node.args[1].value))
+            elif node.args[0].value == str(3) :
+                script += self.textree(TexSoup(node.args[1].value)) 
+                script += '의 세제곱근'
+            elif node.args[0].value == str(4) :
+                script += self.textree(TexSoup(node.args[1].value)) 
+                script += '의 네제곱근'
+            else:
+                script += self.textree(TexSoup(node.args[1].value)) 
+                script += '의 '
+                script += self.textree(TexSoup(node.args[0].value))
+                script += '제곱근'
         elif node.name in self.math_table2:
             script += self.textree(TexSoup(node.args[1].value)) # node.args는 텍스트, 이를 Node화 시키기 위해 TexSoup 사용
             script += self.math_table2[node.name][0]
@@ -81,22 +99,21 @@ class Eq2Script:
                 script += self.textree(TexSoup(arg.value))
         else:
             for cont in node.contents: # node || token 으로만 나누어짐 // '\'가 있으면 node, 없으면 token
-
                 if type(cont) == type(node):
                     script += self.textree(cont)
                 # 텍스트면 그냥 출력
                 # elif str(type(cont)) == "<class 'TexSoup.data.RArg'>":
                 elif prev is not None:
-                    for c_raw in cont:
-                        c = str(c_raw)
-                        if c == str(2):
-                            script += "제곱"
-                        elif c== str(3):
-                            script += "세제곱"
-                        else:
-                            script += '의 '
+                    if str(cont) == "{2}":
+                        script += "제곱"
+                    elif str(cont)== "{3}":
+                        script += "세제곱"
+                    else:    
+                        script += '의 '
+                        for c_raw in cont:
+                            c = str(c_raw)
                             script += self.textree(TexSoup(c))
-                            script += ' 승'
+                        script += ' 승'        
                     prev = None
                 else:
                     for c_raw in cont:
@@ -115,9 +132,13 @@ class Eq2Script:
         return script
 
     def script(self, equation):
-        if len(re.findall('[ㄱ-힣]+', equation)) >= 1:
-            equation = equation.replace('(',' ').replace(')',' ')
-            
+        RGX=re.compile(r'[(].*?[)]')
+        tmp=RGX.findall(equation)
+        for word in tmp:
+            if len(re.findall('[ㄱ-힣]+', word)) >= 1:
+                word2=word.replace('(',' ').replace(')',' ')
+                equation = equation.replace(word,word2)
+                
         if equation.find('>') >= 0 or equation.find('<') >= 0:
             equation=equation.replace('>','\>').replace('<','\<')
         
@@ -158,26 +179,46 @@ class Eq2Script:
 
                 
 if __name__ == '__main__':
+    # tex_doc_list = [
+    #     r'$x\geq 2$',
+    #     r'(근의공식)은 $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.',
+    #     r'$(분배법칙)은a(b+c)=ab+bc$',
+    #     r'$\sqrt[3]{2}>1$',
+    #     r'$(1+x)\times 5=5(x+1)$',
+    #     r'$a^{-3\times 6}$',
+    #     r'$점(\frac{t}{3},t)$',
+    #     r'$0.\.{4}$',
+    #     r'$3^\circ$',
+    #     r'$\acute{x}$',
+    #     r'$\square{ABCD}\sim\square{EFGH}$',
+    #     r"$x^{2+3}+1$",
+    #     r'$A\subsetB$'
+    #     ]
+    
+    # for i in range(len(tex_doc_list)):
+    #     sample = Eq2Script().text2script(tex_doc_list[i])
+    #     print(sample)
+
+    
     # tex_doc = r'$x\geq 2$'
     # tex_doc = r'(근의공식)은 $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.'
     # tex_doc = r'$(속력)=\frac{(거리)}{(시간)}$'
-    # tex_doc = r'(분배법칙)은$a(b+c)=ab+bc$'
-    # tex_doc = r'$\sqrt[3]{2}>1$'
+    # tex_doc = r'$(분배법칙)\rightarrow a(b+c)=ab+bc$'
+    # tex_doc = r'$\sqrt{a}{x}>\sqrt[3]{y}$'
     # tex_doc = r'$(1+x)\times 5=5(x+1)$'
-    # tex_doc = r'$a^{-3\times 6}$'
+    # tex_doc = r'$a^{-3 + 6}$'
     # tex_doc = r'$점(\frac{t}{3},t)$'
     # tex_doc = r'$0.\.{4}$'
     # tex_doc = r'$3^\circ$'
     # tex_doc = r'$\acute{x}$'
     # tex_doc = r'$\square{ABCD}\sim\square{EFGH}$'
     # tex_doc = r"$x^{2+3}+1$"
-    tex_doc = r'$A\subsetB$'
+    # tex_doc = r'$A\subsetB$'
+    tex_doc = r'$\sqrt[5]{x}$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
-    # tex_doc = r'$$'
-
-
+        
     sample = Eq2Script().text2script(tex_doc)
     print(sample)
 
