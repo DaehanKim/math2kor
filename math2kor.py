@@ -5,6 +5,7 @@
 
 from openpyxl import load_workbook, Workbook
 from TexSoup import TexSoup
+from pyjosa import pyjosa
 import sys
 import re
 
@@ -51,6 +52,9 @@ class Eq2Script:
 
     def post_process(self, text):
         text = text.replace('\\','').replace('.','').replace('(','').replace(')','')
+        text = text.replace('를','(을)를').replace('와','(와)과').replace('는','(은)는')
+        while text.count('  '):
+            text = text.replace('  ',' ')
         return text
 
     def textree(self, node): 
@@ -132,12 +136,12 @@ class Eq2Script:
         return script
 
     def script(self, equation):
-        RGX=re.compile(r'[(].*?[)]')
-        tmp=RGX.findall(equation)
-        for word in tmp:
-            if len(re.findall('[ㄱ-힣]+', word)) >= 1:
-                word2=word.replace('(',' ').replace(')',' ')
-                equation = equation.replace(word,word2)
+        # RGX=re.compile(r'[(].*?[)]')
+        # tmp=RGX.findall(equation)
+        # for word in tmp:
+        #     if len(re.findall('[ㄱ-힣]+', word)) >= 1:
+        #         word2=word.replace('(','').replace(')','')
+        #         equation = equation.replace(word,word2)
                 
         if equation.find('>') >= 0 or equation.find('<') >= 0:
             equation=equation.replace('>','\>').replace('<','\<')
@@ -179,48 +183,35 @@ class Eq2Script:
 
                 
 if __name__ == '__main__':
-    # tex_doc_list = [
-    #     r'$x\geq 2$',
-    #     r'(근의공식)은 $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.',
-    #     r'$(분배법칙)은a(b+c)=ab+bc$',
-    #     r'$\sqrt[3]{2}>1$',
-    #     r'$(1+x)\times 5=5(x+1)$',
-    #     r'$a^{-3\times 6}$',
-    #     r'$점(\frac{t}{3},t)$',
-    #     r'$0.\.{4}$',
-    #     r'$3^\circ$',
-    #     r'$\acute{x}$',
-    #     r'$\square{ABCD}\sim\square{EFGH}$',
-    #     r"$x^{2+3}+1$",
-    #     r'$A\subsetB$'
-    #     ]
+    tex_doc_list = [
+        r'$(근의공식)은 x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.',
+        r'$(분배법칙)\rightarrow a(b+c)=ab+bc$',
+        r'$(속력)=\frac{(거리)}{(시간)}$',
+        r'$x\geq 2$',
+        r'$\sqrt[3]{2}>1$',
+        r'$a^{-3\times 6}+1$',
+        r'$점(\frac{t}{3},t)$',
+        r'$0.\.{4}$',
+        r'$3^\circ$',
+        r'$\acute{x}$',
+        r'$\triangle{ABC}\cong\triangle{DEF}$',
+        r"$a^{3+6}+1$",
+        r'$\left| A \right|$',
+        r'$(a^{2})^{2}$',
+        r'$A\cupB$'
+        ]
     
-    # for i in range(len(tex_doc_list)):
-    #     sample = Eq2Script().text2script(tex_doc_list[i])
-    #     print(sample)
+    for i in range(len(tex_doc_list)):
+        sample = Eq2Script().text2script(tex_doc_list[i])
+        sample = pyjosa.replace_josa(sample)
+        print(sample)
 
-    
-    # tex_doc = r'$x\geq 2$'
-    # tex_doc = r'(근의공식)은 $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.'
-    # tex_doc = r'$(속력)=\frac{(거리)}{(시간)}$'
-    # tex_doc = r'$(분배법칙)\rightarrow a(b+c)=ab+bc$'
-    # tex_doc = r'$\sqrt{a}{x}>\sqrt[3]{y}$'
-    # tex_doc = r'$(1+x)\times 5=5(x+1)$'
-    # tex_doc = r'$a^{-3 + 6}$'
-    # tex_doc = r'$점(\frac{t}{3},t)$'
-    # tex_doc = r'$0.\.{4}$'
-    # tex_doc = r'$3^\circ$'
-    # tex_doc = r'$\acute{x}$'
-    # tex_doc = r'$\square{ABCD}\sim\square{EFGH}$'
-    # tex_doc = r"$x^{2+3}+1$"
-    # tex_doc = r'$A\subsetB$'
-    tex_doc = r'$\sqrt[5]{x}$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
     # tex_doc = r'$$'
         
-    sample = Eq2Script().text2script(tex_doc)
-    print(sample)
+    # sample = Eq2Script().text2script(tex_doc)
+    # print(sample)
 
 
     #Eq2Script().xlsx2script('math_table.xlsx')
