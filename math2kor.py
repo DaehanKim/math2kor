@@ -5,7 +5,7 @@
 
 from openpyxl import load_workbook, Workbook
 from TexSoup import TexSoup
-from pyjosa import pyjosa
+import pyjosa
 import sys
 import re
 
@@ -136,13 +136,6 @@ class Eq2Script:
         return script
 
     def script(self, equation):
-        # RGX=re.compile(r'[(].*?[)]')
-        # tmp=RGX.findall(equation)
-        # for word in tmp:
-        #     if len(re.findall('[ㄱ-힣]+', word)) >= 1:
-        #         word2=word.replace('(','').replace(')','')
-        #         equation = equation.replace(word,word2)
-                
         if equation.find('>') >= 0 or equation.find('<') >= 0:
             equation=equation.replace('>','\>').replace('<','\<')
         
@@ -183,35 +176,11 @@ class Eq2Script:
 
                 
 if __name__ == '__main__':
-    tex_doc_list = [
-        r'$(근의공식)은 x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.',
-        r'$(분배법칙)\rightarrow a(b+c)=ab+bc$',
-        r'$(속력)=\frac{(거리)}{(시간)}$',
-        r'$x\geq 2$',
-        r'$\sqrt[3]{2}>1$',
-        r'$a^{-3\times 6}+1$',
-        r'$점(\frac{t}{3},t)$',
-        r'$0.\.{4}$',
-        r'$3^\circ$',
-        r'$\acute{x}$',
-        r'$\triangle{ABC}\cong\triangle{DEF}$',
-        r"$a^{3+6}+1$",
-        r'$\left| A \right|$',
-        r'$(a^{2})^{2}$',
-        r'$A\cupB$'
-        ]
     
-    for i in range(len(tex_doc_list)):
-        sample = Eq2Script().text2script(tex_doc_list[i])
+    tcs = open('test_cases.txt','rt',encoding='utf8') 
+
+    for idx,tc in enumerate(tcs):
+        sample = Eq2Script().text2script(tc)
         sample = pyjosa.replace_josa(sample)
-        print(sample)
+        print('({}){}'.format(idx+1,sample))
 
-    # tex_doc = r'$$'
-    # tex_doc = r'$$'
-    # tex_doc = r'$$'
-        
-    # sample = Eq2Script().text2script(tex_doc)
-    # print(sample)
-
-
-    #Eq2Script().xlsx2script('math_table.xlsx')

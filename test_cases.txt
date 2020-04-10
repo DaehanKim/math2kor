@@ -1,0 +1,182 @@
+$(근의공식)은 x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$ 이다.
+$(분배법칙)\rightarrow a(b+c)=ab+bc$
+$(속력)=\frac{(거리)}{(시간)}$
+$x\geq 2$
+$\sqrt[3]{2}>1$
+$a^{-3\times 6}+1$
+$점(\frac{t}{3},t)$
+$0.\.{4}$
+$3^\circ$
+$\acute{x}$
+$\triangle{ABC}\cong\triangle{DEF}$
+$a^{3+6}+1$
+$\left| A \right|$
+$(a^{2})^{2}$
+$A\cupB$
+$x$
+$\rightarrow$
+$(사과 x개의 값)=(사과 1개의 가격)\times(사과의 개수)=1000\times x(원)$
+$(수)\times(문자)$
+$(수)\times(수)$
+$1\times(문자), -1\times(문자)$
+$(문자)\times(문자)$
+$0.1\times a$
+$0.a$
+$0.1a$
+$(수)\times(문자)$
+$2\times x=2x, 0.1\times x=0.1x$
+$(수)\times(수)$
+$2\times 8=2\cdot 8$
+$1\times(문자), -1\times(문자)$
+$a\times 1=a, (-1)\times a=-a$
+$(문자)\times(문자)$
+$c\times a=ac, y\times x\times a=axy$
+$x\times x\times x=x^3, a\times b\times a=a^2 b$
+$(1+x)\times 5=5(x+1), (a+b)\times (-2)=-2(a+b)$
+$a\div b = a\times\frac{1}{b} = \frac{a}{b}(단, b\neq 0)$
+$x\div 3=x\times\frac{1}{3}=\frac{x}{3}, x\div (-4)=-\frac{x}{4}$
+$b$
+$\neq$
+$b\neq 0$
+$x=2$
+$5x-3$
+$\Rightarrow$
+$5x-3$
+$\rightarrow$
+$x=2$
+$\rightarrow$
+$5\times 2-3=7$
+$a=-3$
+$4a+5$
+$\Rightarrow$
+$4a+5$
+$\rightarrow$
+$a=-3$
+$\rightarrow$
+$4\times (-3)+5=-7$
+$x^2+2x-3$
+$x^2$
+$x^2+2x-3$
+$6x+1$
+$6x$
+$6x+1$
+$5(2x+3)=5\times 2x+5\times 3=10x+15$
+$(4x-1)\times 2=4x\times 2-1\times 2=8x-2$
+$\rightarrow$
+$-(a+b)=-a-b$
+$-(a-b)=-a+b$
+$(4x-12)\div 4=(4x-12)\times \frac{1}{4}=4x\times \frac{1}{4}-12\times \frac{1}{4}=x-3$
+$5x+2+3x-4$
+$5x$
+$3x$
+$6x+3y+2x-y$
+$\Rightarrow$
+$6x+3y+2x-y=6x+2x+3y-y=(6+2)x+(3-1)y=8x+2y$
+$(3x+6)+(5x-2)=3x+6+5x-2$
+$(3x+5x)+(6-2)=8x+4$
+$(3x+6)-(5x-2)=(3x+6)+(-5x-2)=3x+6-5x+2$
+$(3x-5x)+(6+2)=-2x+8$
+$3x+2=1$
+$x-12=3x$
+$x-3$
+$4x+1>3$
+$x+1 = 3$
+$x=2$
+$x=1$
+$x+3 = 2x$
+$x$
+$4x + 8 = 20$
+$x$
+$x = 1$
+$4 \times 1 + 8 = 12$
+$\rightarrow$
+$12 \ne 20$
+$x = 2$
+$4 \times 2 + 8 = 16$
+$\rightarrow$
+$16 \ne 20$
+$x = 3$
+$4 \times 3 + 8 = 20$
+$\rightarrow$
+$20 = 20$
+$4x + 8 = 20$
+$x=3$
+$-x+5x=4x$
+$2x-2=2(x-1)$
+$x-2=3$
+$x-1=x+2$
+$a = b$
+$a+c = b+c$
+$a=b$
+$a-c = b-c$
+$a=b$
+$a \times c = b \times c$
+$a=b$
+$\frac{a}{c} = \frac{b}{c}$
+$c \neq 0$
+$'x=(수)'$
+$x-2 = 3$
+$\rightarrow$
+$x-2+2 = 3 +2$
+$x = 5$
+$x + 1 = 2$
+$\rightarrow$
+$x+1 - 1 = 2 - 1$
+$x = 1$
+$\frac{x}{3} = 1$
+$\rightarrow$
+$\frac{x}{3} \times 3 = 1 \times 3$
+$x = 3$
+$2x = 4$
+$\rightarrow$
+$\frac{2x}{2} = \frac{4}{2} $
+$x=2$
+$2x + 3 = 1$
+$\rightarrow$
+$2x = 1 - 3$
+$+$
+$\rightarrow$
+$-$
+$-$
+$\rightarrow$
+$+$
+$(일차식) = 0$
+$2x + 1 = 0, 3x - 1 = 4$
+$x+1 = 2x-1$
+$\rightarrow$
+$-x + 2 = 0$
+$\rightarrow$
+$2x + 3 = 3 + x + x$
+$\rightarrow$
+$0 =0$
+$\rightarrow$
+$ x^2 = 3 - x + x^2$
+$\rightarrow$
+$x-3 = 0$
+$\rightarrow$
+$ax=b$
+$a\neq 0$
+$x=(수)$
+$a(b+c)=ab+ac$
+$a : b = x : y$
+$\rightarrow$
+$ay = bx$
+$x$
+$x$
+$x$
+$x$
+$\rightarrow$
+$x, x+1$
+$x-1, x$
+$\rightarrow$
+$x, x+1, x+2$
+$x-1, x, x+1$
+$x$
+$x$
+$(거리) = (속력) \times (시간)$
+$(속력) = \frac{(거리)}{(시간)}$
+$(시간) = \frac{(거리)}{(속력)}$
+$(소금물의 농도) = \frac{(소금의 양)}{(소금물의 양)} \times 100(%)$
+$(소금의 양)=\frac{(소금물의 농도)}{100} \times (소금물의 양)$
+$\rightarrow$
+$\rightarrow$
